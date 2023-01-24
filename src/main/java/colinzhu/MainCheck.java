@@ -2,11 +2,8 @@ package colinzhu;
 
 import colinzhu.ruleengine.PaymentRuleEngine;
 import colinzhu.ruleengine.Result;
-import colinzhu.ruleengine.highvalue.HighValueCheckFact;
-import colinzhu.ruleengine.highvalue.HighValueRuleEngine;
 
 import java.util.Arrays;
-import java.util.function.Function;
 
 public class MainCheck {
   public static void main(String[] args) {

@@ -8,20 +8,20 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class HighValueRuleEngine implements Function<HighValueCheckFact, Result> {
+public class HighValueRule implements Function<HighValueCheckFact, Result> {
   private final HighValueCondition[] highValueConditions;
   private final HighValuePreCondition[] highValuePreConditions;
 
   @SneakyThrows
-  public HighValueRuleEngine() {
+  public HighValueRule() {
     highValueConditions = ConditionRepository.getCondition(ConditionRepository.ConditionType.HIGH_VALUE_CONDITION, HighValueCondition[].class);
     highValuePreConditions = ConditionRepository.getCondition(ConditionRepository.ConditionType.HIGH_VALUE_PRE_CONDITION, HighValuePreCondition[].class);
   }
 
   @Override
   public Result apply(HighValueCheckFact fact) {
-    if (Arrays.stream(highValuePreConditions).anyMatch(condition -> test(fact, condition))) {
-      Optional<HighValueCondition> matchedCondition = Arrays.stream(highValueConditions).filter(condition -> test(fact, condition)).findFirst();
+    if (Arrays.stream(highValuePreConditions).anyMatch(condition -> condition.test(fact))) {
+      Optional<HighValueCondition> matchedCondition = Arrays.stream(highValueConditions).filter(condition -> condition.test(fact)).findFirst();
       if (matchedCondition.isPresent()) {
         return new Result(Result.ResultType.HIGH_VALUE, Result.ResultCode.POSITIVE, "Condition: " + matchedCondition.get());
       } else {
@@ -32,15 +32,4 @@ public class HighValueRuleEngine implements Function<HighValueCheckFact, Result>
     }
   }
 
-  private boolean test(HighValueCheckFact fact, HighValueCondition condition) {
-    boolean result = condition.getEntity().equals(fact.getEntity()) && condition.getCurrency().equals(fact.getCurrency()) && fact.getAmount() >= condition.getAmount();
-    System.out.println(result + " tested condition: " + condition);
-    return result;
-  }
-
-  private boolean test(HighValueCheckFact fact, HighValuePreCondition condition) {
-    boolean result = condition.getEntity().equals(fact.getEntity());
-    System.out.println(result + " tested condition: " + condition);
-    return result;
-  }
 }
