@@ -12,7 +12,7 @@ public class MainCheck {
   public static void main(String[] args) {
 
     Payment payment = new Payment();
-    payment.setEntity("CN");
+    payment.setEntity("UK");
     payment.setCurrency("HKD");
     payment.setAmount(80000);
 

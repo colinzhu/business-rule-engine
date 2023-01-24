@@ -20,10 +20,9 @@ public class HighValueRuleEngine implements Function<HighValueCheckFact, Result>
 
   @Override
   public Result apply(HighValueCheckFact fact) {
-    if (Arrays.stream(highValuePreConditions).anyMatch(condition -> condition.test(fact))) {
-      Optional<HighValueCondition> matchedCondition = Arrays.stream(highValueConditions).filter(condition -> condition.test(fact)).findFirst();
+    if (Arrays.stream(highValuePreConditions).anyMatch(condition -> test(fact, condition))) {
+      Optional<HighValueCondition> matchedCondition = Arrays.stream(highValueConditions).filter(condition -> test(fact, condition)).findFirst();
       if (matchedCondition.isPresent()) {
-        System.out.println("Y." + matchedCondition.get());
         return new Result(Result.ResultType.HIGH_VALUE, Result.ResultCode.POSITIVE, "Condition: " + matchedCondition.get());
       } else {
         return new Result(Result.ResultType.HIGH_VALUE, Result.ResultCode.NEGATIVE, "No condition matched.");
@@ -31,5 +30,17 @@ public class HighValueRuleEngine implements Function<HighValueCheckFact, Result>
     } else {
       return new Result(Result.ResultType.HIGH_VALUE, Result.ResultCode.NA, "Not applicable.");
     }
+  }
+
+  private boolean test(HighValueCheckFact fact, HighValueCondition condition) {
+    boolean result = condition.getEntity().equals(fact.getEntity()) && condition.getCurrency().equals(fact.getCurrency()) && fact.getAmount() >= condition.getAmount();
+    System.out.println(result + " tested condition: " + condition);
+    return result;
+  }
+
+  private boolean test(HighValueCheckFact fact, HighValuePreCondition condition) {
+    boolean result = condition.getEntity().equals(fact.getEntity());
+    System.out.println(result + " tested condition: " + condition);
+    return result;
   }
 }
