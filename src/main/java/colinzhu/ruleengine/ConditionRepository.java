@@ -2,12 +2,14 @@ package colinzhu.ruleengine;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+@Slf4j
 public class ConditionRepository {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private static final ConditionRepository instance = new ConditionRepository();
@@ -22,7 +24,7 @@ public class ConditionRepository {
     private static String getConditionJson(ConditionType conditionType) throws IOException, URISyntaxException {
         String filePath = "condition/" + conditionType.type + ".json";
         String json = Files.readString(Path.of(ClassLoader.getSystemResource(filePath).toURI()));
-        System.out.println(conditionType + ":\n" + json);
+        log.info(conditionType + ":\n" + json);
         return json;
     }
 

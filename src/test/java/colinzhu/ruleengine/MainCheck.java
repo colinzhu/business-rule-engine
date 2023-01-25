@@ -1,10 +1,13 @@
-package colinzhu;
+package colinzhu.ruleengine;
 
+import colinzhu.Payment;
 import colinzhu.ruleengine.PaymentRuleEngine;
 import colinzhu.ruleengine.Result;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;
 
+@Slf4j
 public class MainCheck {
   public static void main(String[] args) {
 
@@ -15,7 +18,7 @@ public class MainCheck {
 
     PaymentRuleEngine paymentRuleEngine = new PaymentRuleEngine();
     Result[] results = paymentRuleEngine.apply(payment);
-    System.out.println(Arrays.toString(results));
+    log.info(Arrays.toString(results));
   }
 
 

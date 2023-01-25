@@ -1,10 +1,12 @@
 package colinzhu.ruleengine.highvalue;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.function.Predicate;
 
 @Data
+@Slf4j
 public class HighValueCondition implements Predicate<HighValueCheckFact>{
   private String name;
   private String entity;
@@ -14,7 +16,7 @@ public class HighValueCondition implements Predicate<HighValueCheckFact>{
   @Override
   public boolean test(HighValueCheckFact fact) {
     boolean result = entity.equals(fact.getEntity()) && currency.equals(fact.getCurrency()) && fact.getAmount() >= amount;
-    System.out.println(result + " tested condition: " + this);
+    log.info(result + " tested condition: " + this);
     return result;
   }
 }
