@@ -1,6 +1,5 @@
 package colinzhu.ruleengine.payment;
 
-import colinzhu.ruleengine.Result;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
 package colinzhu.ruleengine.payment;
 
-import colinzhu.ruleengine.Result;
 import colinzhu.ruleengine.core.RuleConfigService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.SneakyThrows;
@@ -10,14 +9,8 @@ import java.util.Map;
 import java.util.Optional;
 
 public class HighValueRule {
-  private final List<Map> highValueCheckRuleConfig;
-  private final List<Map> highValuePreCheckRuleConfig;
-
-  @SneakyThrows
-  public HighValueRule() {
-    highValueCheckRuleConfig = RuleConfigService.getCondition(RuleConfigService.Type.HIGH_VALUE_CHECK);
-    highValuePreCheckRuleConfig = RuleConfigService.getCondition(RuleConfigService.Type.HIGH_VALUE_PRE_CHECK);
-  }
+  private final List<Map> highValueCheckRuleConfig = RuleConfigService.getConfig("high-value-check-rule-config");
+  private final List<Map> highValuePreCheckRuleConfig = RuleConfigService.getConfig("high-value-pre-check-rule-config");
 
   public Result apply(JsonNode fact) {
     if (highValuePreCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue()))) {
