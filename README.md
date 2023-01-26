@@ -1,4 +1,4 @@
-# CSV Business Rule Engine
+# CSV Business Rules Engine
 A design of business rule engine which handles business rules in CSV
 
 Business Rule = Condition + Action
