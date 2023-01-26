@@ -2,7 +2,7 @@ package colinzhu.ruleengine;
 
 import colinzhu.Payment;
 import colinzhu.ruleengine.highvalue.HighValueCheckFact;
-import colinzhu.ruleengine.highvalue.HighValueRule;
+import colinzhu.ruleengine.highvalue.HighValuePreCheckRule;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ public class PaymentRuleEngine implements Function<Payment, Result[]> {
 
     public PaymentRuleEngine() {
         engineList = new ArrayList<>();
-        engineList.add(payment -> new HighValueRule().apply(paymentToHighValueFact(payment)));
+        engineList.add(payment -> new HighValuePreCheckRule().apply(paymentToHighValueFact(payment)));
         // can add other business rule engines
     }
 
