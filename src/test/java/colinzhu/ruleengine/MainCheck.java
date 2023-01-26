@@ -1,8 +1,7 @@
 package colinzhu.ruleengine;
 
-import colinzhu.Payment;
-import colinzhu.ruleengine.PaymentRuleEngine;
-import colinzhu.ruleengine.Result;
+import colinzhu.ruleengine.payment.Payment;
+import colinzhu.ruleengine.payment.PaymentRuleEngine;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Arrays;

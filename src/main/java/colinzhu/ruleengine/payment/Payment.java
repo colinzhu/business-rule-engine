@@ -1,4 +1,4 @@
-package colinzhu;
+package colinzhu.ruleengine.payment;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package colinzhu.ruleengine.highvalue;
+package colinzhu.ruleengine.payment.highvalue;
 
 import lombok.Data;
 
