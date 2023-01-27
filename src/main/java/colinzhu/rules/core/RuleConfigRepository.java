@@ -1,18 +1,17 @@
 package colinzhu.rules.core;
 
 import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Optional;
 
 @Slf4j
+@RequiredArgsConstructor
 public class RuleConfigRepository {
 
     private final EntityManager entityManager;
-    public RuleConfigRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     public Optional<RuleConfig> findById(Integer id) {
         RuleConfig entity = entityManager.find(RuleConfig.class, id);
