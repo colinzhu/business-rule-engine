@@ -19,7 +19,7 @@ public class PaymentRuleEngine {
 
     public Result[] apply(Payment payment) {
         // invoke all the engines, combine all the results into an array
-        return ruleList.parallelStream().map(engine -> engine.apply(payment)).toArray(Result[]::new);
+        return ruleList.parallelStream().map(rule -> rule.apply(payment)).toArray(Result[]::new);
     }
 
 }
