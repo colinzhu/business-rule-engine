@@ -1,4 +1,4 @@
-package colinzhu.ruleengine.core;
+package colinzhu.rules.core;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
@@ -11,13 +11,16 @@ import java.util.Map;
 
 @Slf4j
 public class RuleConfigService {
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final RuleConfigRepository repo;
 
-    private RuleConfigService() {}
+    public RuleConfigService(RuleConfigRepository repo) {
+        this.repo = repo;
+    }
 
     @SneakyThrows
-    public static List<Map> getConfig(String name) {
-        return objectMapper.readValue(getConfigJson(name), objectMapper.getTypeFactory().constructCollectionType(List.class, Map.class));
+    public List<Map> getConfig(String name) {
+        return objectMapper.readValue(getJson(name), objectMapper.getTypeFactory().constructCollectionType(List.class, Map.class));
     }
 
     @SneakyThrows
@@ -27,4 +30,9 @@ public class RuleConfigService {
         log.info(name + ":\n" + json);
         return json;
     }
+
+    private String getJson(String name) {
+        return repo.findByName(name).get().getContent();
+    }
+
 }
