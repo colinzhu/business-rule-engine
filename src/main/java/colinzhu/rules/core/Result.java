@@ -7,6 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class Result {
     String rule;
-    Enum code;
+    Object value;
     String remark;
 }

@@ -33,6 +33,10 @@ Usually the business conditions are written in Excel / CSV
 ### RuleEngine
 - A component combines Rule and Fact, and kick off the processing.
 
+### Result
+- A result contains the rule's name, processing result, and a remark
+- For actions without any return value, processing result can be null or String e.g. DONE or anything else
+
 ### Reference
 - Martin Fowler's [RulesEngine](https://martinfowler.com/bliki/RulesEngine.html)
 - [Easy Rules](https://github.com/j-easy/easy-rules) 

@@ -2,10 +2,7 @@ package colinzhu.rules;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
-import colinzhu.rules.core.Result;
-import colinzhu.rules.core.RuleConfigRepository;
-import colinzhu.rules.core.RuleConfigService;
-import colinzhu.rules.core.RuleEngine;
+import colinzhu.rules.core.*;
 import colinzhu.rules.payment.HighValueRule;
 import colinzhu.rules.payment.Payment;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,7 +31,7 @@ public class MainCheckPayment {
     List<Map> highValueCheckRuleConfig = ruleConfigService.getConfig("high-value-check");
     List<Map> highValuePreCheckRuleConfig = ruleConfigService.getConfig("high-value-pre-check");
 
-    HighValueRule highValueRule = new HighValueRule(highValueCheckRuleConfig, highValuePreCheckRuleConfig);
+    Rule highValueRule = new HighValueRule(highValueCheckRuleConfig, highValuePreCheckRuleConfig);
     RuleEngine engine = new RuleEngine(List.of(highValueRule));
 
     Payment payment = new Payment();

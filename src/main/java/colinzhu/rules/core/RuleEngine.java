@@ -4,11 +4,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.function.Function;
 
 @RequiredArgsConstructor
 public class RuleEngine {
-    private final List<Function<JsonNode, Result>> ruleList;
+    private final List<Rule> ruleList;
 
     public Result[] apply(JsonNode fact) {
         // invoke all the engines, combine all the results into an array
