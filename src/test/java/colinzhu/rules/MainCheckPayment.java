@@ -33,15 +33,15 @@ public class MainCheckPayment {
         RuleConfigRepository repo = new RuleConfigRepository(em);
         RuleConfigService ruleConfigService = new RuleConfigService(repo);
 
-        List<Map> highValueCheckRuleConfig = ruleConfigService.getConfig("high-value-check");
-        List<Map> highValuePreCheckRuleConfig = ruleConfigService.getConfig("high-value-pre-check");
+        List<Map> highValueCheckRuleConfig = ruleConfigService.getConfigAsListOfMap("high-value-check");
+        List<Map> highValuePreCheckRuleConfig = ruleConfigService.getConfigAsListOfMap("high-value-pre-check");
 
         // Approach 1: custom rule class
         Rule highValueRule = new HighValueRule(highValueCheckRuleConfig, highValuePreCheckRuleConfig);
         RuleEngine engine = new RuleEngine(List.of(highValueRule));
 
         Payment payment = new Payment();
-        payment.setEntity("CN");
+        payment.setEntity("UK");
         payment.setCurrency("HKD");
         payment.setAmount(80000);
 
@@ -52,7 +52,7 @@ public class MainCheckPayment {
         // Approach 2: Use DefaultRule, chain 2 rules into 1
         Rule highValueCheckRule = DefaultRule.builder()
                 .when(fact -> highValueCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue()) && item.get("currency").equals(fact.get("currency").textValue()) && ((Integer) item.get("amount")) <= fact.get("amount").asInt()))
-                .then(fact -> new Result("HIGH_VALUE_CHECK", true, PaymentCheckResultCode.POSITIVE, "Rule matched. "))
+                .then(fact -> new Result("HIGH_VALUE_CHECK", true, PaymentCheckResultCode.POSITIVE, "Rule matched."))
                 .otherwise(fact -> new Result("HIGH_VALUE_CHECK", false, PaymentCheckResultCode.NEGATIVE, "No rule matched."))
                 .build();
 

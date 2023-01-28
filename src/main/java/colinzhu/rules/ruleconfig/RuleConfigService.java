@@ -17,19 +17,19 @@ public class RuleConfigService {
     private final RuleConfigRepository repo;
 
     @SneakyThrows
-    private static String getConfigJson(String name) {
-        String filePath = "rule-config/" + name + ".json";
+    private static String getContentFromFile(String filename) {
+        String filePath = "rule-config/" + filename;
         String json = Files.readString(Path.of(ClassLoader.getSystemResource(filePath).toURI()));
-        log.info(name + ":\n" + json);
+        log.info(filename + ":\n" + json);
         return json;
     }
 
     @SneakyThrows
-    public List<Map> getConfig(String name) {
-        return objectMapper.readValue(getJson(name), objectMapper.getTypeFactory().constructCollectionType(List.class, Map.class));
+    public List<Map> getConfigAsListOfMap(String name) {
+        return objectMapper.readValue(getContent(name), objectMapper.getTypeFactory().constructCollectionType(List.class, Map.class));
     }
 
-    private String getJson(String name) {
+    private String getContent(String name) {
         return repo.findByName(name).orElseThrow().getContent();
     }
 
