@@ -1,2 +1,10 @@
-[{"name":"UK","entity":"UK"},
-  {"name":"US","entity":"US"}]
+[
+  {
+    "name": "UK",
+    "entity": "UK"
+  },
+  {
+    "name": "US",
+    "entity": "US"
+  }
+]

@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 
 @Data
 @Builder
-public class DefaultRule implements Rule{
+public class DefaultRule implements Rule {
     private Predicate<JsonNode> when;
     private Function<JsonNode, Result> then;
     private Function<JsonNode, Result> otherwise;

@@ -1,3 +1,20 @@
-[{"name":"UK-USD","entity":"UK","currency":"USD","amount":1000},
-  {"name":"UK-UKD","entity":"UK","currency":"HKD","amount":8000},
-  {"name":"UK-CNY","entity":"UK","currency":"CNY","amount":6000}]
+[
+  {
+    "name": "UK-USD",
+    "entity": "UK",
+    "currency": "USD",
+    "amount": 1000
+  },
+  {
+    "name": "UK-UKD",
+    "entity": "UK",
+    "currency": "HKD",
+    "amount": 8000
+  },
+  {
+    "name": "UK-CNY",
+    "entity": "UK",
+    "currency": "CNY",
+    "amount": 6000
+  }
+]

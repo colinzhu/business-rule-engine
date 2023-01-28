@@ -15,10 +15,6 @@ public class RuleEngine {
     @Setter
     private Policy policy;
 
-    public enum Policy {
-        PARALLEL_ALL, SEQ_STOP_IF_FAIL
-    }
-
     public List<Result> apply(JsonNode fact) {
         // invoke all the engines, combine all the results into an array
         if (Policy.PARALLEL_ALL == policy) {
@@ -38,5 +34,9 @@ public class RuleEngine {
         } else {
             return ruleList.parallelStream().map(rule -> rule.apply(fact)).collect(Collectors.toList());
         }
+    }
+
+    public enum Policy {
+        PARALLEL_ALL, SEQ_STOP_IF_FAIL
     }
 }
