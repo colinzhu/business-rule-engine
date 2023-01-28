@@ -1,4 +1,4 @@
-package colinzhu.rules.payment;
+package colinzhu.rules.example;
 
 import lombok.Data;
 

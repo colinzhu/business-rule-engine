@@ -6,9 +6,9 @@ import colinzhu.rules.core.DefaultRule;
 import colinzhu.rules.core.Result;
 import colinzhu.rules.core.Rule;
 import colinzhu.rules.core.RuleEngine;
-import colinzhu.rules.payment.HighValueRule;
-import colinzhu.rules.payment.Payment;
-import colinzhu.rules.payment.PaymentCheckResultCode;
+import colinzhu.rules.example.HighValueRule;
+import colinzhu.rules.example.Payment;
+import colinzhu.rules.example.PaymentCheckResultCode;
 import colinzhu.rules.ruleconfig.RuleConfigRepository;
 import colinzhu.rules.ruleconfig.RuleConfigService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class MainCheckPayment {
+public class Example {
     public static void main(String[] args) {
         // init
         ObjectMapper objectMapper = new ObjectMapper();

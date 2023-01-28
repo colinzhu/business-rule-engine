@@ -1,4 +1,4 @@
-package colinzhu.rules.payment;
+package colinzhu.rules.example;
 
 import colinzhu.rules.core.Result;
 import colinzhu.rules.core.Rule;

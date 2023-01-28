@@ -39,7 +39,7 @@ public class RuleConfigServiceTest {
 
     @Test
     public void getConfigFromJsonFromClasspath() {
-        List<Map> configIsJsonArray = ruleConfigService.getConfigFromJson("high-value-check.json");
+        List<Map> configIsJsonArray = ruleConfigService.getConfigFromJson("example-high-value-check.json");
         log.info("configIsJsonArray: " + configIsJsonArray);
     }
 }

@@ -5,10 +5,12 @@ import colinzhu.rules.ruleconfig.RuleConfigRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
 
-public class MainRuleConfigRepo {
+@Slf4j
+public class ExampleData {
 
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("csv-business-rules-engine");
@@ -35,12 +37,12 @@ public class MainRuleConfigRepo {
         ruleConfig3.setCreateTime(System.currentTimeMillis());
 
         Optional<RuleConfig> config = repo.save(ruleConfig);
-        System.out.println(config);
+        log.info("high-value-check:" + config);
 
         Optional<RuleConfig> config2 = repo.save(ruleConfig2);
-        System.out.println(config2);
+        log.info("high-value-pre-check:" + config2);
 
         Optional<RuleConfig> config3 = repo.save(ruleConfig3);
-        System.out.println(config3);
+        log.info("json-object:" + config3);
     }
 }

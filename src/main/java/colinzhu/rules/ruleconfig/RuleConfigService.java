@@ -9,20 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor
 public class RuleConfigService {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RuleConfigRepository repo;
-
-    @SneakyThrows
-    public List<Map> getConfigAsListOfMap(String name) {
-        return objectMapper.readValue(getContent(name), new TypeReference<>() {
-        });
-    }
 
     @SneakyThrows
     public <T> T getConfigFromJson(String name) {
