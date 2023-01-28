@@ -74,7 +74,7 @@ public class MainCheckPayment {
         Rule highValuePreCheckRule3 = DefaultRule.builder()
                 .when(fact -> highValuePreCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue())))
                 .then(fact -> new Result("HIGH_VALUE_PRE_CHECK", true, null, "Pre-check passed."))
-                .otherwise(fact -> new Result("HIGH_VALUE_PRE_CHECK", false, PaymentCheckResultCode.NA, "Pre-check failed."))
+                //.otherwise(fact -> new Result("HIGH_VALUE_PRE_CHECK", false, PaymentCheckResultCode.NA, "Pre-check failed."))
                 .build();
 
         RuleEngine engine3 = new RuleEngine(List.of(highValuePreCheckRule3, highValueCheckRule));

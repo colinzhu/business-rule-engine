@@ -3,6 +3,7 @@ package colinzhu.rules.core;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -15,10 +16,14 @@ public class DefaultRule implements Rule {
     private Function<JsonNode, Result> otherwise;
 
     @Override
-    public Result apply(JsonNode jsonNode) {
-        if (when.test(jsonNode)) {
-            return then.apply(jsonNode);
+    public Result apply(JsonNode fact) {
+        if (when.test(fact)) {
+            return then.apply(fact);
         }
-        return otherwise.apply(jsonNode);
+        return otherwise != null ? otherwise.apply(fact) : defaultOtherwise(fact);
+    }
+
+    private Result defaultOtherwise(JsonNode fact) {
+        return new Result("DefaultRule", false, null, "Default otherwise function.");
     }
 }
