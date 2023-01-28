@@ -21,10 +21,14 @@ Usually the business conditions are written in Excel / CSV
 - JSON can be persisted as files or in database
 - If stored in database, different kinds of JSON will be store in one single table
 - By saving different versions of JSON into database, the application can support versioning
+- Business rule config is OPTIONAL, it's not mandatory when creating a Rule
 
 ### Rule
-- A Rule is a single java class which parses the business rule config to define the conditions and actions
-- So Rule = Business rule config + Java logic
+- A Rule contains conditions("when") and actions("then", "otherwise"), and returns a Result
+- There are 2 approaches to create a rule:
+- a. Create a java class to implement the Rule interface
+- b. Use the DefaultRule to build a rule.
+
 
 ### "Fact"
 - A "Fact" is a runtime object instance to be checked against / applied on a rule

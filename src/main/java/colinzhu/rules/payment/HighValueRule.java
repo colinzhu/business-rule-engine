@@ -15,10 +15,6 @@ public class HighValueRule implements Rule {
   private final List<Map> highValueCheckRuleConfig;
   private final List<Map> highValuePreCheckRuleConfig;
 
-  public enum ResultCode {
-    POSITIVE, NEGATIVE, NA
-  }
-
   @Override
   public Result apply(JsonNode fact) {
     if (highValuePreCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue()))) {
@@ -26,12 +22,12 @@ public class HighValueRule implements Rule {
               .filter(item -> item.get("entity").equals(fact.get("entity").textValue()) && item.get("currency").equals(fact.get("currency").textValue()) && ((Integer)item.get("amount")) <= fact.get("amount").asInt())
               .findFirst();
       if (matchConfigItem.isPresent()) {
-        return new Result(RULE_NAME, ResultCode.POSITIVE, "Rule matched: " + matchConfigItem.get());
+        return new Result(RULE_NAME, true, PaymentCheckResultCode.POSITIVE, "Rule matched: " + matchConfigItem.get());
       } else {
-        return new Result(RULE_NAME, ResultCode.NEGATIVE, "No rule matched.");
+        return new Result(RULE_NAME, false, PaymentCheckResultCode.NEGATIVE, "No rule matched.");
       }
     } else {
-      return new Result(RULE_NAME, ResultCode.NA, "Not applicable.");
+      return new Result(RULE_NAME, false, PaymentCheckResultCode.NA, "Not applicable.");
     }
   }
 

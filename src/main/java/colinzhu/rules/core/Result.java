@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Result {
     String rule;
+    Boolean matched;
     Object value;
     String remark;
 }

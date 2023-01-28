@@ -1,4 +1,4 @@
-package colinzhu.rules.core;
+package colinzhu.rules.ruleconfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

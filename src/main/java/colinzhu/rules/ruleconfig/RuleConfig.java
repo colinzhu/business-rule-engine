@@ -1,4 +1,4 @@
-package colinzhu.rules.core;
+package colinzhu.rules.ruleconfig;
 
 import jakarta.persistence.*;
 import lombok.*;

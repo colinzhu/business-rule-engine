@@ -1,7 +1,7 @@
 package colinzhu.rules;
 
-import colinzhu.rules.core.RuleConfig;
-import colinzhu.rules.core.RuleConfigRepository;
+import colinzhu.rules.ruleconfig.RuleConfig;
+import colinzhu.rules.ruleconfig.RuleConfigRepository;
 import jakarta.persistence.*;
 
 import java.util.Optional;
