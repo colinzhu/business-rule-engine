@@ -20,10 +20,6 @@ public class DefaultRule implements Rule {
         if (when.test(fact)) {
             return then.apply(fact);
         }
-        return otherwise != null ? otherwise.apply(fact) : defaultOtherwise(fact);
-    }
-
-    private Result defaultOtherwise(JsonNode fact) {
-        return new Result("DefaultRule", false, null, "Default otherwise function.");
+        return otherwise.apply(fact);
     }
 }

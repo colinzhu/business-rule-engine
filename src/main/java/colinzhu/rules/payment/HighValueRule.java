@@ -27,7 +27,7 @@ public class HighValueRule implements Rule {
                 return new Result(RULE_NAME, false, PaymentCheckResultCode.NEGATIVE, "No rule matched.");
             }
         } else {
-            return new Result(RULE_NAME, false, PaymentCheckResultCode.NA, "Not applicable.");
+            return new Result(RULE_NAME, false, PaymentCheckResultCode.NA, "Pre-check no matched.");
         }
     }
 
