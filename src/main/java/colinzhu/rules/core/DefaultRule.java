@@ -3,7 +3,6 @@ package colinzhu.rules.core;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NonNull;
 
 import java.util.function.Function;
 import java.util.function.Predicate;

@@ -27,10 +27,20 @@ public class MainRuleConfigRepo {
         ruleConfig2.setIsActive(true);
         ruleConfig2.setCreateTime(System.currentTimeMillis());
 
+
+        RuleConfig ruleConfig3 = new RuleConfig();
+        ruleConfig3.setName("json-object");
+        ruleConfig3.setContent("{\"name\":\"UK\",\"entity\":\"UK\"}");
+        ruleConfig3.setIsActive(true);
+        ruleConfig3.setCreateTime(System.currentTimeMillis());
+
         Optional<RuleConfig> config = repo.save(ruleConfig);
         System.out.println(config);
 
         Optional<RuleConfig> config2 = repo.save(ruleConfig2);
         System.out.println(config2);
+
+        Optional<RuleConfig> config3 = repo.save(ruleConfig3);
+        System.out.println(config3);
     }
 }

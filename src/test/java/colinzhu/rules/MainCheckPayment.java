@@ -25,6 +25,8 @@ import java.util.Map;
 public class MainCheckPayment {
     public static void main(String[] args) {
         // init
+        ObjectMapper objectMapper = new ObjectMapper();
+
         Logger root = (Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
         root.setLevel(Level.INFO);
 
@@ -33,8 +35,8 @@ public class MainCheckPayment {
         RuleConfigRepository repo = new RuleConfigRepository(em);
         RuleConfigService ruleConfigService = new RuleConfigService(repo);
 
-        List<Map> highValueCheckRuleConfig = ruleConfigService.getConfigAsListOfMap("high-value-check");
-        List<Map> highValuePreCheckRuleConfig = ruleConfigService.getConfigAsListOfMap("high-value-pre-check");
+        List<Map> highValueCheckRuleConfig = ruleConfigService.getConfigFromJson("high-value-check");
+        List<Map> highValuePreCheckRuleConfig = ruleConfigService.getConfigFromJson("high-value-pre-check");
 
         // Approach 1: custom rule class
         Rule highValueRule = new HighValueRule(highValueCheckRuleConfig, highValuePreCheckRuleConfig);
@@ -45,7 +47,6 @@ public class MainCheckPayment {
         payment.setCurrency("HKD");
         payment.setAmount(80000);
 
-        ObjectMapper objectMapper = new ObjectMapper();
         List<Result> results = engine.apply(objectMapper.valueToTree(payment));
         log.info(results.toString());
 

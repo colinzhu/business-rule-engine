@@ -1,10 +1,12 @@
 package colinzhu.rules.ruleconfig;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -17,20 +19,29 @@ public class RuleConfigService {
     private final RuleConfigRepository repo;
 
     @SneakyThrows
-    private static String getContentFromFile(String filename) {
-        String filePath = "rule-config/" + filename;
-        String json = Files.readString(Path.of(ClassLoader.getSystemResource(filePath).toURI()));
-        log.info(filename + ":\n" + json);
-        return json;
+    public List<Map> getConfigAsListOfMap(String name) {
+        return objectMapper.readValue(getContent(name), new TypeReference<>() {
+        });
     }
 
     @SneakyThrows
-    public List<Map> getConfigAsListOfMap(String name) {
-        return objectMapper.readValue(getContent(name), objectMapper.getTypeFactory().constructCollectionType(List.class, Map.class));
+    public <T> T getConfigFromJson(String name) {
+        return objectMapper.readValue(getContent(name), new TypeReference<>() {
+        });
     }
 
+    @SneakyThrows
     private String getContent(String name) {
+        //if (name.endsWith(".json")) {
+        URL classpathFileUrl = ClassLoader.getSystemResource("rule-config/" + name);
+        if (classpathFileUrl != null) {
+            log.info("Get Content from classpath: rule-config/" + name);
+            Path filePath = Path.of(classpathFileUrl.toURI());
+            String json = Files.readString(filePath);
+            log.info(name + ":\n" + json);
+            return json;
+        }
+        //}
         return repo.findByName(name).orElseThrow().getContent();
     }
-
 }
