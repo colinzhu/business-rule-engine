@@ -2,7 +2,9 @@ package colinzhu.rules;
 
 import colinzhu.rules.ruleconfig.RuleConfig;
 import colinzhu.rules.ruleconfig.RuleConfigRepository;
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import java.util.Optional;
 
