@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-public class RuleEngine {
+public class RulesEngine {
     private final List<Rule> ruleList;
 
     @Setter

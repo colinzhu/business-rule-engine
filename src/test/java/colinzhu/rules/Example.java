@@ -5,7 +5,7 @@ import ch.qos.logback.classic.Logger;
 import colinzhu.rules.core.DefaultRule;
 import colinzhu.rules.core.Result;
 import colinzhu.rules.core.Rule;
-import colinzhu.rules.core.RuleEngine;
+import colinzhu.rules.core.RulesEngine;
 import colinzhu.rules.example.HighValueRule;
 import colinzhu.rules.example.Payment;
 import colinzhu.rules.example.PaymentCheckResultCode;
@@ -40,7 +40,7 @@ public class Example {
 
         // Approach 1: custom rule class
         Rule highValueRule = new HighValueRule(highValueCheckRuleConfig, highValuePreCheckRuleConfig);
-        RuleEngine engine = new RuleEngine(List.of(highValueRule));
+        RulesEngine engine = new RulesEngine(List.of(highValueRule));
 
         Payment payment = new Payment();
         payment.setEntity("UK");
@@ -66,7 +66,7 @@ public class Example {
                 .otherwise(fact -> new Result("HIGH_VALUE_PRE_CHECK", false, PaymentCheckResultCode.NA, "Pre-check failed."))
                 .build();
 
-        RuleEngine engine2 = new RuleEngine(List.of(highValuePreCheckRule));
+        RulesEngine engine2 = new RulesEngine(List.of(highValuePreCheckRule));
         List<Result> results2 = engine2.apply(objectMapper.valueToTree(payment));
         log.info(results2.toString());
 
@@ -78,8 +78,8 @@ public class Example {
                 .otherwise(fact -> new Result("HIGH_VALUE_PRE_CHECK", false, PaymentCheckResultCode.NA, "Pre-check failed."))
                 .build();
 
-        RuleEngine engine3 = new RuleEngine(List.of(highValuePreCheckRule3, highValueCheckRule));
-        engine3.setPolicy(RuleEngine.Policy.SEQ_STOP_IF_FAIL);
+        RulesEngine engine3 = new RulesEngine(List.of(highValuePreCheckRule3, highValueCheckRule));
+        engine3.setPolicy(RulesEngine.Policy.SEQ_STOP_IF_FAIL);
         List<Result> results3 = engine3.apply(objectMapper.valueToTree(payment));
         log.info(results3.toString());
 
