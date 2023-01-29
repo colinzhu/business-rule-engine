@@ -1,6 +1,6 @@
 # CSV Business Rules Engine
 
-A design of business rule engine which handles business rules in CSV
+A design of business rules engine which handles business rules in CSV
 
 <img src="./csv-business-rules-engine.drawio.svg" />
 
