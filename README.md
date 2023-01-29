@@ -2,9 +2,11 @@
 
 A design of business rule engine which handles business rules in CSV
 
-Business Rule = Condition + Action
+Rule = Condition + Action
 
 Usually the business conditions are written in Excel / CSV
+
+<img src="./csv-business-rules-engine.drawio.svg" />
 
 ### Feature
 
