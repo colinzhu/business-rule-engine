@@ -2,10 +2,10 @@ package colinzhu.rules;
 
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
-import colinzhu.rules.core.DefaultRule;
-import colinzhu.rules.core.Result;
-import colinzhu.rules.core.Rule;
-import colinzhu.rules.core.RulesEngine;
+import colinzhu.rules.engine.DefaultRule;
+import colinzhu.rules.engine.Result;
+import colinzhu.rules.engine.Rule;
+import colinzhu.rules.engine.RulesEngine;
 import colinzhu.rules.example.HighValueRule;
 import colinzhu.rules.example.Payment;
 import colinzhu.rules.example.PaymentCheckResultCode;

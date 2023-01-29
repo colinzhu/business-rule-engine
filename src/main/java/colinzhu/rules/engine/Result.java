@@ -1,4 +1,4 @@
-package colinzhu.rules.core;
+package colinzhu.rules.engine;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

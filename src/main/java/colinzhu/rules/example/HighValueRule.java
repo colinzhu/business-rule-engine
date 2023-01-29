@@ -1,7 +1,7 @@
 package colinzhu.rules.example;
 
-import colinzhu.rules.core.Result;
-import colinzhu.rules.core.Rule;
+import colinzhu.rules.engine.Result;
+import colinzhu.rules.engine.Rule;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 
