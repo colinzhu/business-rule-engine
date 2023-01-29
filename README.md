@@ -14,6 +14,7 @@ A design of business rules engine which handles business rules in CSV
 
 ### Rule Config
 
+- Rule Config is NOT Rule, it's the metadata to be used when defining a Rule
 - Usually the business rules are stored as a table in Excel / CSV.
   This CSV is treated as a **Rule Config**
   When parsing the CSV, one record can be read as:
@@ -29,6 +30,7 @@ A design of business rules engine which handles business rules in CSV
 ### Rule
 
 - A Rule contains conditions("when") and actions("then", "otherwise"), and returns a Result
+- When defining a Rule, it's usual to use Rule Config, but not mandatory
 - There are 2 approaches to create a rule:
 - a. Create a java class to implement the Rule interface
 - b. Use the DefaultRuleBuilder to build a rule.
