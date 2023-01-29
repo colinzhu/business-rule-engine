@@ -13,6 +13,7 @@ import java.util.Optional;
 public class ExampleData {
 
     public static void main(String[] args) {
+        long time = System.currentTimeMillis();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("csv-business-rules-engine");
         EntityManager em = emf.createEntityManager();
         RuleConfigRepository repo = new RuleConfigRepository(em);
@@ -21,20 +22,23 @@ public class ExampleData {
         ruleConfig.setName("high-value-check");
         ruleConfig.setContent("[{\"name\":\"UK-USD\",\"entity\":\"UK\",\"currency\":\"USD\",\"amount\":1000},{\"name\":\"UK-UKD\",\"entity\":\"UK\",\"currency\":\"HKD\",\"amount\":8000},{\"name\":\"UK-CNY\",\"entity\":\"UK\",\"currency\":\"CNY\",\"amount\":6000}]\n");
         ruleConfig.setIsActive(true);
-        ruleConfig.setCreateTime(System.currentTimeMillis());
+        ruleConfig.setCreateTime(time);
+        ruleConfig.setUpdateTime(time);
 
         RuleConfig ruleConfig2 = new RuleConfig();
         ruleConfig2.setName("high-value-pre-check");
         ruleConfig2.setContent("[{\"name\":\"UK\",\"entity\":\"UK\"},{\"name\":\"US\",\"entity\":\"US\"}]\n");
         ruleConfig2.setIsActive(true);
-        ruleConfig2.setCreateTime(System.currentTimeMillis());
+        ruleConfig2.setCreateTime(time);
+        ruleConfig2.setUpdateTime(time);
 
 
         RuleConfig ruleConfig3 = new RuleConfig();
         ruleConfig3.setName("json-object");
         ruleConfig3.setContent("{\"name\":\"UK\",\"entity\":\"UK\"}");
         ruleConfig3.setIsActive(true);
-        ruleConfig3.setCreateTime(System.currentTimeMillis());
+        ruleConfig3.setCreateTime(time);
+        ruleConfig3.setUpdateTime(time);
 
         Optional<RuleConfig> config = repo.save(ruleConfig);
         log.info("high-value-check:" + config);

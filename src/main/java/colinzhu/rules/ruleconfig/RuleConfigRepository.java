@@ -29,6 +29,12 @@ public class RuleConfigRepository {
         return ruleConfig != null ? Optional.of(ruleConfig) : Optional.empty();
     }
 
+    public Optional<RuleConfig> findByNameAndUpdateTimeGreaterThan(String name, Long updateTime) {
+        RuleConfig ruleConfig = entityManager.createQuery("SELECT c FROM RuleConfig c WHERE c.name = :name and c.updateTime > :updateTime", RuleConfig.class)
+                .setParameter("name", name)
+                .getSingleResult();
+        return ruleConfig != null ? Optional.of(ruleConfig) : Optional.empty();
+    }
     public Optional<RuleConfig> save(RuleConfig ruleConfig) {
         try {
             entityManager.getTransaction().begin();
