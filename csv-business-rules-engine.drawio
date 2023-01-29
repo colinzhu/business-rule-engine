@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-01-29T09:14:14.768Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="wlPHeGXD6025kKtpR2tz" version="20.8.13" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-29T09:44:04.246Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="A8ddDo5iiMI0x4XYEIHU" version="20.8.13" type="github">
   <diagram name="第 1 页" id="k_MjvAYGadmgMED4aWBA">
     <mxGraphModel dx="1434" dy="656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -128,8 +128,10 @@
         <mxCell id="whABC5RCjYTY_ZpFyo8G-3" value="is" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="qniWZXkrSbu6CSLmuXpC-45" target="qniWZXkrSbu6CSLmuXpC-52" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="HUguJ1zSQx9U1E5bz3AY-3" value="can have" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="qniWZXkrSbu6CSLmuXpC-45" target="qniWZXkrSbu6CSLmuXpC-5">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="HUguJ1zSQx9U1E5bz3AY-3" value="implementations can access" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="qniWZXkrSbu6CSLmuXpC-45" target="qniWZXkrSbu6CSLmuXpC-5" edge="1">
+          <mxGeometry x="-0.4186" y="-20" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="qniWZXkrSbu6CSLmuXpC-45" value="Rule Interface" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="385" y="10" width="170" height="170" as="geometry" />
