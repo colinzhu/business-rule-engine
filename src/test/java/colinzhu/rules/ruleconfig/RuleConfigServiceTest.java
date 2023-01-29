@@ -30,16 +30,16 @@ public class RuleConfigServiceTest {
 
     @Test
     public void getConfigFromJsonFromRepository() {
-        Map configIsJsonObject = ruleConfigService.getConfigFromJson("json-object");
+        Map configIsJsonObject = ruleConfigService.parseConfigFromJson("json-object");
         log.info("configIsJsonObject: " + configIsJsonObject);
 
-        List<Map> configIsJsonArray = ruleConfigService.getConfigFromJson("high-value-check");
+        List<Map> configIsJsonArray = ruleConfigService.parseConfigFromJson("high-value-check");
         log.info("configIsJsonArray: " + configIsJsonArray);
     }
 
     @Test
     public void getConfigFromJsonFromClasspath() {
-        List<Map> configIsJsonArray = ruleConfigService.getConfigFromJson("example-high-value-check.json");
+        List<Map> configIsJsonArray = ruleConfigService.parseConfigFromJson("example-high-value-check.json");
         log.info("configIsJsonArray: " + configIsJsonArray);
     }
 }

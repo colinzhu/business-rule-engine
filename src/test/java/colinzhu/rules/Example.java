@@ -35,11 +35,9 @@ public class Example {
         RuleConfigRepository repo = new RuleConfigRepository(em);
         RuleConfigService ruleConfigService = new RuleConfigService(repo);
 
-        List<Map> highValueCheckRuleConfig = ruleConfigService.getConfigFromJson("high-value-check");
-        List<Map> highValuePreCheckRuleConfig = ruleConfigService.getConfigFromJson("high-value-pre-check");
 
         // Approach 1: custom rule class
-        Rule highValueRule = new HighValueRule(highValueCheckRuleConfig, highValuePreCheckRuleConfig);
+        Rule highValueRule = new HighValueRule(ruleConfigService);
         RulesEngine engine = new RulesEngine(List.of(highValueRule));
 
         Payment payment = new Payment();
@@ -52,13 +50,13 @@ public class Example {
 
         // Approach 2: Use DefaultRule, chain 2 rules into 1
         Rule highValueCheckRule = DefaultRule.builder()
-                .when(fact -> highValueCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue()) && item.get("currency").equals(fact.get("currency").textValue()) && ((Integer) item.get("amount")) <= fact.get("amount").asInt()))
+                .when(fact -> ruleConfigService.<List<Map>>parseConfigFromJson("example-high-value-check.json").stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue()) && item.get("currency").equals(fact.get("currency").textValue()) && ((Integer) item.get("amount")) <= fact.get("amount").asInt()))
                 .then(fact -> new Result("HIGH_VALUE_CHECK", true, PaymentCheckResultCode.POSITIVE, "Rule matched."))
                 .otherwise(fact -> new Result("HIGH_VALUE_CHECK", false, PaymentCheckResultCode.NEGATIVE, "No rule matched."))
                 .build();
 
         Rule highValuePreCheckRule = DefaultRule.builder()
-                .when(fact -> highValuePreCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue())))
+                .when(fact -> ruleConfigService.<List<Map>>parseConfigFromJson("high-value-pre-check").stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue())))
                 .then(fact -> {
                     log.info("HIGH_VALUE_PRE_CHECK passed.");
                     return highValueCheckRule.apply(fact);
@@ -73,7 +71,7 @@ public class Example {
 
         // Approach 3: Use DefaultRule, chain 2 rules with Policy.SEQ_STOP_IF_FAIL
         Rule highValuePreCheckRule3 = DefaultRule.builder()
-                .when(fact -> highValuePreCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue())))
+                .when(fact -> ruleConfigService.<List<Map>>parseConfigFromJson("high-value-pre-check").stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue())))
                 .then(fact -> new Result("HIGH_VALUE_PRE_CHECK", true, null, "Pre-check passed."))
                 .otherwise(fact -> new Result("HIGH_VALUE_PRE_CHECK", false, PaymentCheckResultCode.NA, "Pre-check failed."))
                 .build();

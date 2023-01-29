@@ -7,9 +7,6 @@ import lombok.Data;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RuleConfigService {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final RuleConfigRepository repo;
-    private final Map<String, RuleConfig> cache = new ConcurrentHashMap<>();
+    private final Map<String, ObjectWithUpdateTime> cache = new ConcurrentHashMap<>();
 
     public RuleConfigService(RuleConfigRepository repo) {
         this.repo = repo;
@@ -37,37 +34,23 @@ public class RuleConfigService {
     }
 
     @SneakyThrows
-    public <T> T getConfigFromJson(String name) {
-        return objectMapper.readValue(getContent(name).getContent(), new TypeReference<>(){});
-    }
-
-    @SneakyThrows
-    private RuleConfig getContent(String name) {
-        RuleConfig cachedRuleConfig = cache.get(name);
-        if (null != cachedRuleConfig) {
-            return cachedRuleConfig;
+    public <T> T parseConfigFromJson(String name) {
+        ObjectWithUpdateTime<T> cached = cache.get(name);
+        if (null != cached) {
+            log.info("Get parsed config from cache. Name: " + name);
+            return cached.getObject();
         }
+        log.info("Get parsed config from file / DB. Name: " + name);
+        RuleConfig ruleConfig = repo.findByName(name).orElseThrow();
+        T t = objectMapper.readValue(ruleConfig.getContent(), new TypeReference<>() {});
+        cache.put(name, new ObjectWithUpdateTime<>(t, ruleConfig.getUpdateTime()));
 
-        RuleConfig ruleConfig;
-        URL classpathFileUrl = ClassLoader.getSystemResource("rule-config/" + name);
-        if (classpathFileUrl != null) {
-            log.info("Get Content from classpath: rule-config/" + name);
-            Path filePath = Path.of(classpathFileUrl.toURI());
-            String json = Files.readString(filePath);
-            log.info(name + ":\n" + json);
-            ruleConfig = new RuleConfig();
-            ruleConfig.setName(name);
-            ruleConfig.setUpdateTime(null);// TODO
-        } else {
-            ruleConfig = repo.findByName(name).orElseThrow();
-        }
-        cache.put(name, ruleConfig);
-        return ruleConfig;
+        return t;
     }
 
     @Data
     @AllArgsConstructor
-    private static class ObjectAndUpdateTime<T> {
+    private static class ObjectWithUpdateTime<T> {
         private T object;
         private Long updateTime;
     }
