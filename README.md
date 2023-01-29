@@ -8,7 +8,8 @@ A design of business rule engine which handles business rules in CSV
 
 - Quickly create rules with lambdas
 - Business rule configs stored in single table
-- Business rule configs stored as files 
+- Business rule configs stored as files
+- Cache and auto fresh cache of business rule configs
 - Simple
 
 ### Rule Config

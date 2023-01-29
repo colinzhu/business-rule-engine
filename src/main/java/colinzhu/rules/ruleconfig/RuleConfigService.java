@@ -30,7 +30,7 @@ public class RuleConfigService {
             }
         };
         Timer timer = new Timer();
-        timer.schedule(refreshCacheTask, 0, 10000);
+        timer.schedule(refreshCacheTask, 0, 5*60*1000);
     }
 
     @SneakyThrows
