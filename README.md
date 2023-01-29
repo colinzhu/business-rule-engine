@@ -9,7 +9,7 @@ A design of business rules engine which handles business rules in CSV
 - Quickly create rules with lambdas
 - Business rule configs stored in single table
 - Business rule configs stored as files
-- Cache and auto fresh cache of business rule configs
+- Cache and auto refresh cache of business rule configs
 - Simple
 
 ### Rule Config
@@ -26,6 +26,7 @@ A design of business rules engine which handles business rules in CSV
 - By saving different versions of JSON into database, the application can support versioning
 - Rule config is OPTIONAL, it's not mandatory when creating a Rule
 - Other data types can be added by adding new parsers
+- The RuleConfigService supports cache and auto refresh cache of Rule Config 
 
 ### Rule
 
