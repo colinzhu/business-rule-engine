@@ -2,10 +2,6 @@
 
 A design of business rule engine which handles business rules in CSV
 
-Rule = Condition (when) + Action (then, otherwise)
-
-Usually the business conditions are written in CSV / Excel
-
 <img src="./csv-business-rules-engine.drawio.svg" />
 
 ### Feature
