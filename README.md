@@ -2,38 +2,39 @@
 
 A design of business rule engine which handles business rules in CSV
 
-Rule = Condition + Action
+Rule = Condition (when) + Action (then, otherwise)
 
-Usually the business conditions are written in Excel / CSV
+Usually the business conditions are written in CSV / Excel
 
 <img src="./csv-business-rules-engine.drawio.svg" />
 
 ### Feature
 
-- Handle business rules as CSV / JSON
-- Zero or only one database table
-- No complex configuration files
-- One java class for one rule
+- Quickly create rules with lambdas
+- Business rule configs stored in single table
+- Business rule configs stored as files 
+- Simple
 
-### Business rule config
+### Rule Config
 
 - Usually the business rules are stored as a table in Excel / CSV.
-  This CSV is treated as a **business rule config**
+  This CSV is treated as a **Rule Config**
   When parsing the CSV, one record can be read as:
   > when (columnA = x and columnB = y) then use columnC
 - CSV format can be converted to JSON for application to process and store
-- JSON will be easy for UI to render as a table for user to edit
+- JSON is for UI to render as a table for user to edit
 - JSON can be persisted as files or in database
 - If stored in database, different kinds of JSON will be store in one single table
 - By saving different versions of JSON into database, the application can support versioning
-- Business rule config is OPTIONAL, it's not mandatory when creating a Rule
+- Rule config is OPTIONAL, it's not mandatory when creating a Rule
+- Other data types can be added by adding new parsers
 
 ### Rule
 
 - A Rule contains conditions("when") and actions("then", "otherwise"), and returns a Result
 - There are 2 approaches to create a rule:
 - a. Create a java class to implement the Rule interface
-- b. Use the DefaultRule to build a rule.
+- b. Use the DefaultRuleBuilder to build a rule.
 
 ### "Fact"
 
@@ -48,7 +49,6 @@ Usually the business conditions are written in Excel / CSV
 ### Result
 
 - A result contains the rule's name, processing result, and a remark
-- For actions without any return value, processing result can be null or String e.g. DONE or anything else
 
 ### Reference
 
