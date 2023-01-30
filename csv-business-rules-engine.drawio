@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-01-29T14:18:58.464Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="ezxBq4yED8pSnGc1JXr_" version="20.8.13" type="github">
+<mxfile host="app.diagrams.net" modified="2023-01-30T13:54:35.924Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" etag="EuyuhAX2xMApvaSIEsGI" version="20.8.13" type="github">
   <diagram name="第 1 页" id="k_MjvAYGadmgMED4aWBA">
-    <mxGraphModel dx="1434" dy="656" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="717" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -28,7 +28,7 @@
         <mxCell id="qniWZXkrSbu6CSLmuXpC-56" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" parent="1" source="qniWZXkrSbu6CSLmuXpC-4" target="qniWZXkrSbu6CSLmuXpC-13" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qniWZXkrSbu6CSLmuXpC-4" value="Rule Config Table" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+        <mxCell id="qniWZXkrSbu6CSLmuXpC-4" value="Config Table" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
           <mxGeometry x="570" y="370" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="whABC5RCjYTY_ZpFyo8G-1" style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="NUIzNvh8BpzUtb_C3xTs-2" target="qniWZXkrSbu6CSLmuXpC-6" edge="1">
@@ -41,13 +41,13 @@
             <mxPoint x="450" y="350" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NUIzNvh8BpzUtb_C3xTs-4" value="invokes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="qniWZXkrSbu6CSLmuXpC-5" target="NUIzNvh8BpzUtb_C3xTs-2">
+        <mxCell id="NUIzNvh8BpzUtb_C3xTs-4" value="invokes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="qniWZXkrSbu6CSLmuXpC-5" target="NUIzNvh8BpzUtb_C3xTs-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="qniWZXkrSbu6CSLmuXpC-5" value="Rule Config Service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="qniWZXkrSbu6CSLmuXpC-5" value="Config Service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="176" y="320" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="qniWZXkrSbu6CSLmuXpC-6" value="Rule Config Files" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;verticalAlign=bottom;" parent="1" vertex="1">
+        <mxCell id="qniWZXkrSbu6CSLmuXpC-6" value="Config Files" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="570" y="260" width="60" height="80" as="geometry" />
         </mxCell>
         <mxCell id="qniWZXkrSbu6CSLmuXpC-11" value="Default Rule Buider" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -74,7 +74,7 @@
             <mxRectangle width="154" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NUIzNvh8BpzUtb_C3xTs-5" value="Is_Active" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=#A7C942;align=center;fontStyle=1;fontColor=#FFFFFF;html=1;" vertex="1" parent="qniWZXkrSbu6CSLmuXpC-13">
+        <mxCell id="NUIzNvh8BpzUtb_C3xTs-5" value="Is_Active" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=#A7C942;align=center;fontStyle=1;fontColor=#FFFFFF;html=1;" parent="qniWZXkrSbu6CSLmuXpC-13" vertex="1">
           <mxGeometry x="314" width="62" height="33" as="geometry">
             <mxRectangle width="62" height="33" as="alternateBounds" />
           </mxGeometry>
@@ -102,7 +102,7 @@
             <mxRectangle width="154" height="32" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NUIzNvh8BpzUtb_C3xTs-6" value="true" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;align=center;whiteSpace=wrap;html=1;" vertex="1" parent="qniWZXkrSbu6CSLmuXpC-17">
+        <mxCell id="NUIzNvh8BpzUtb_C3xTs-6" value="true" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;align=center;whiteSpace=wrap;html=1;" parent="qniWZXkrSbu6CSLmuXpC-17" vertex="1">
           <mxGeometry x="314" width="62" height="32" as="geometry">
             <mxRectangle width="62" height="32" as="alternateBounds" />
           </mxGeometry>
@@ -130,7 +130,7 @@
             <mxRectangle width="154" height="31" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NUIzNvh8BpzUtb_C3xTs-7" value="false" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" vertex="1" parent="qniWZXkrSbu6CSLmuXpC-21">
+        <mxCell id="NUIzNvh8BpzUtb_C3xTs-7" value="false" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;whiteSpace=wrap;html=1;" parent="qniWZXkrSbu6CSLmuXpC-21" vertex="1">
           <mxGeometry x="314" width="62" height="31" as="geometry">
             <mxRectangle width="62" height="31" as="alternateBounds" />
           </mxGeometry>
@@ -158,7 +158,7 @@
             <mxRectangle width="154" height="33" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="NUIzNvh8BpzUtb_C3xTs-8" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;fontStyle=0;align=center;whiteSpace=wrap;html=1;" vertex="1" parent="qniWZXkrSbu6CSLmuXpC-25">
+        <mxCell id="NUIzNvh8BpzUtb_C3xTs-8" style="connectable=0;recursiveResize=0;strokeColor=inherit;fillColor=inherit;fontStyle=0;align=center;whiteSpace=wrap;html=1;" parent="qniWZXkrSbu6CSLmuXpC-25" vertex="1">
           <mxGeometry x="314" width="62" height="33" as="geometry">
             <mxRectangle width="62" height="33" as="alternateBounds" />
           </mxGeometry>
@@ -203,7 +203,7 @@
         <mxCell id="qniWZXkrSbu6CSLmuXpC-52" value="Function&amp;lt;JsonNode, Result&amp;gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="605" y="72.5" width="170" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="NUIzNvh8BpzUtb_C3xTs-2" value="Rule Config Repository" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="NUIzNvh8BpzUtb_C3xTs-2" value="Config Repository" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="385" y="325" width="120" height="50" as="geometry" />
         </mxCell>
       </root>
