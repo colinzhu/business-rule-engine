@@ -1,4 +1,4 @@
-package colinzhu.rules.engine;
+package colinzhu.rules;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.Builder;

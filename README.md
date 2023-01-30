@@ -12,8 +12,18 @@ A design of business rules engine which handles business rules in CSV
 - Cache and auto refresh cache of business rule configs
 - Simple
 
+### Config Service
+
+- Config Service manages (store, update, retrieve, delete etc.) configurations (configs)
+- Configs can be String of json, csv or any other format
+- Configs can be stored in DB or as files or extended to other medias e.g. git
+- Additional features can be added to Config Service, e.g. UI for business users to edit / approve
+- To improve the performance, it supports to retrieve only summary of the config, in case the config itself is too large
+- It can be deployed as a microservice similar to Spring Cloud Config
+
 ### Rule Config
 
+- Rule Config is a kind of config, can be retrieved from ConfigService
 - Rule Config is NOT Rule, it's the metadata to be used when defining a Rule
 - Usually the business rules are stored as a table in Excel / CSV.
   This CSV is treated as a **Rule Config**

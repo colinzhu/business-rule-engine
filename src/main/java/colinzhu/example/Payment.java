@@ -1,4 +1,4 @@
-package colinzhu.rules.example;
+package colinzhu.example;
 
 import lombok.Data;
 

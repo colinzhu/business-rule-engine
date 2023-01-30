@@ -1,4 +1,4 @@
-package colinzhu.rules.ruleconfig;
+package colinzhu.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,12 +13,12 @@ import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
-public class RuleConfigService {
+public class ConfigService {
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final RuleConfigRepository repo;
+    private final ConfigRepository repo;
     private final Map<String, ObjectWithUpdateTime> cache = new ConcurrentHashMap<>();
 
-    public RuleConfigService(RuleConfigRepository repo) {
+    public ConfigService(ConfigRepository repo) {
         this.repo = repo;
         TimerTask refreshCacheTask = new TimerTask() {
             @Override
@@ -30,7 +30,7 @@ public class RuleConfigService {
             }
         };
         Timer timer = new Timer();
-        timer.schedule(refreshCacheTask, 0, 5*60*1000);
+        timer.schedule(refreshCacheTask, 0, 5 * 60 * 1000);
     }
 
     @SneakyThrows
@@ -41,9 +41,10 @@ public class RuleConfigService {
             return cached.getObject();
         }
         log.info("Get parsed config from file / DB. Name: " + name);
-        RuleConfig ruleConfig = repo.findByName(name).orElseThrow();
-        T t = objectMapper.readValue(ruleConfig.getContent(), new TypeReference<>() {});
-        cache.put(name, new ObjectWithUpdateTime<>(t, ruleConfig.getUpdateTime()));
+        Config config = repo.findByName(name).orElseThrow();
+        T t = objectMapper.readValue(config.getContent(), new TypeReference<>() {
+        });
+        cache.put(name, new ObjectWithUpdateTime<>(t, config.getUpdateTime()));
 
         return t;
     }

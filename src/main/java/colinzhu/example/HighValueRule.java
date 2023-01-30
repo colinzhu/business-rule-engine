@@ -1,8 +1,8 @@
-package colinzhu.rules.example;
+package colinzhu.example;
 
-import colinzhu.rules.engine.Result;
-import colinzhu.rules.engine.Rule;
-import colinzhu.rules.ruleconfig.RuleConfigService;
+import colinzhu.config.ConfigService;
+import colinzhu.rules.Result;
+import colinzhu.rules.Rule;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 
@@ -13,12 +13,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class HighValueRule implements Rule {
     private static final String RULE_NAME = "HIGH_VALUE";
-    private final RuleConfigService ruleConfigService;
+    private final ConfigService configService;
 
     @Override
     public Result apply(JsonNode fact) {
-        List<Map> highValueCheckRuleConfig = ruleConfigService.parseConfigFromJson("example-high-value-check.json");
-        List<Map> highValuePreCheckRuleConfig = ruleConfigService.parseConfigFromJson("high-value-pre-check");
+        List<Map> highValueCheckRuleConfig = configService.parseConfigFromJson("example-high-value-check.json");
+        List<Map> highValuePreCheckRuleConfig = configService.parseConfigFromJson("high-value-pre-check");
 
         if (highValuePreCheckRuleConfig.stream().anyMatch(item -> item.get("entity").equals(fact.get("entity").textValue()))) {
             Optional<Map> matchConfigItem = highValueCheckRuleConfig.stream()

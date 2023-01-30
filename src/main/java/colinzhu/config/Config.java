@@ -1,4 +1,4 @@
-package colinzhu.rules.ruleconfig;
+package colinzhu.config;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,12 +10,12 @@ import org.hibernate.Hibernate;
 import java.util.Objects;
 
 @Entity
-@Table(name = "RULE_CONFIG")
+@Table(name = "CONFIG")
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class RuleConfig {
+public class Config {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, insertable = false, updatable = false)
@@ -39,7 +39,7 @@ public class RuleConfig {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        RuleConfig that = (RuleConfig) o;
+        Config that = (Config) o;
         return id != null && Objects.equals(id, that.id);
     }
 
