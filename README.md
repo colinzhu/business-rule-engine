@@ -67,3 +67,4 @@ A design of business rules engine which handles business rules in CSV
 
 - Martin Fowler's [RulesEngine](https://martinfowler.com/bliki/RulesEngine.html)
 - [Easy Rules](https://github.com/j-easy/easy-rules) 
+- [Using Redis to store configuration information](https://redis.com/ebook/part-2-core-concepts/chapter-5-using-redis-for-application-support/5-4-service-discovery-and-configuration/5-4-1-using-redis-to-store-configuration-information/)
